@@ -8,7 +8,7 @@ Open a [vehicle report](https://github.com/nicremo/open-obd-gui/issues/new?templ
 
 ## Development
 
-Requirements: macOS 26 or newer, Xcode with Swift 6.2 or newer.
+Requirements: macOS 26 or newer, Xcode 26 or newer (CI uses Swift 6.3).
 
 ```bash
 swift build

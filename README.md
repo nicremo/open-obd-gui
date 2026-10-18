@@ -98,7 +98,7 @@ open "/Applications/Open OBD GUI.app" --args --demo mondeo-mk4
 
 ### Build from source
 
-Requires Xcode with Swift 6.2 or newer.
+Requires Xcode 26 or newer. CI builds and tests with Swift 6.3.
 
 ```bash
 git clone https://github.com/nicremo/open-obd-gui.git
