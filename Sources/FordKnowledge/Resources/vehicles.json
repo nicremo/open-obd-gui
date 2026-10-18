@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "mondeo-mk4",
+      "nameDE": "Ford Mondeo IV (BA7)",
+      "years": "2007 bis 2014",
+      "platform": "BA7",
+      "expectedBuses": ["hs-can", "ms-can"],
+      "hints": [
+        "Fahrzeugschein: Typ BA7, Hubraum 1997 cm³, das passt zum 2.0 TDCi Duratorq (Inferenz).",
+        "Komfortmodule liegen typischerweise am MS-CAN und sind nur mit OBDLink EX oder MX+ erreichbar.",
+        "Dieselmotoren melden Readiness für Selbstzünder, unter anderem Partikelfilter und Abgasrückführung."
+      ],
+      "confidence": "community",
+      "source": "Zulassungsdaten des Fahrzeugs, öffentlicher FORScan-Changelog, öffentliche Ford-Dokumentation"
+    },
+    {
+      "id": "focus-mk4",
+      "nameDE": "Ford Focus IV (C519)",
+      "years": "2018 bis 2025",
+      "platform": "C519",
+      "expectedBuses": ["hs-can", "ms-can"],
+      "hints": [
+        "150 PS im Modelljahr 2020: 1.5 EcoBoost (Benzin) oder 2.0 EcoBlue (Diesel). Das klären VIN und Motorsteuergerät.",
+        "Gateway-Architektur (GWM) wahrscheinlich. Welche Module am Stecker erreichbar sind, zeigt die Modulsuche."
+      ],
+      "confidence": "community",
+      "source": "Angaben des Halters, eigene Analyse zur Plattform C519, öffentliche Ford-Dokumentation"
+    }
+  ]
+}

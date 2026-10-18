@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {"wmi": "WF0", "manufacturerDE": "Ford-Werke GmbH, Deutschland", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "SFA", "manufacturerDE": "Ford Motor Company Ltd., Vereinigtes Königreich", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "VS6", "manufacturerDE": "Ford España, Spanien", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "NM0", "manufacturerDE": "Ford Otosan, Türkei", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "1FA", "manufacturerDE": "Ford Motor Company, USA (Pkw)", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "1FM", "manufacturerDE": "Ford Motor Company, USA (Mehrzweckfahrzeuge)", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "1FT", "manufacturerDE": "Ford Motor Company, USA (Pick-ups und Transporter)", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "2FA", "manufacturerDE": "Ford Motor Company, Kanada", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"},
+    {"wmi": "3FA", "manufacturerDE": "Ford Motor Company, Mexiko", "confidence": "community", "source": "WMI-Register nach ISO 3780, Sekundärquellen"}
+  ]
+}

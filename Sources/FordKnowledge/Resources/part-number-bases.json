@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {"base": "12A650", "acronym": "PCM", "nameDE": "Motorsteuergerät", "confidence": "community", "source": "Ford-Teilenummernsystematik, öffentliche Ersatzteilkataloge"},
+    {"base": "14B321", "acronym": "RCM", "nameDE": "Airbag-Steuergerät", "confidence": "community", "source": "Ford-Teilenummernsystematik, öffentliche Ersatzteilkataloge"},
+    {"base": "10849", "acronym": "IPC", "nameDE": "Kombiinstrument", "confidence": "community", "source": "Ford-Teilenummernsystematik, im öffentlichen FORScan-Changelog als IPC-Konfiguration NX7T-10849-SXB genannt"}
+  ]
+}
