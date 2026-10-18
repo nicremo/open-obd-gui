@@ -1,0 +1,33 @@
+name: Vehicle report
+description: Share what Open OBD GUI finds on your car
+labels: [vehicle-report]
+body:
+  - type: markdown
+    attributes:
+      value: Reports from real cars are the fastest way to confirm meanings and add vehicles. Please replace your VIN in everything you paste.
+  - type: input
+    id: vehicle
+    attributes:
+      label: Vehicle
+      placeholder: "Ford Mondeo IV, 2012, 2.0 TDCi 140 PS"
+    validations:
+      required: true
+  - type: input
+    id: adapter
+    attributes:
+      label: Adapter and firmware
+      description: From `openobd adapter`
+      placeholder: "OBDLink EX, STN2230 v5.10.3"
+    validations:
+      required: true
+  - type: textarea
+    id: modules
+    attributes:
+      label: Modules found
+      description: Output of `openobd modules --json` or a list from the Modules screen
+      render: json
+  - type: textarea
+    id: notes
+    attributes:
+      label: What looked right, what looked wrong
+      description: Values that match the dashboard, values that do not, modules that did not answer

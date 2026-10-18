@@ -20,4 +20,4 @@ exec "$TARGET/openobd" "\$@"
 WRAPPER
 chmod +x "$HOME/.local/bin/openobd"
 
-echo "openobd $("$TARGET/openobd" --version) installiert: $HOME/.local/bin/openobd"
+echo "openobd $("$TARGET/openobd" --version) installed: $HOME/.local/bin/openobd"

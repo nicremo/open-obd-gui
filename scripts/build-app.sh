@@ -19,4 +19,4 @@ if [ -f Support/AppIcon.icns ]; then
 fi
 
 codesign --force --deep --sign - "$APP" >/dev/null
-echo "Gebaut: $APP"
+echo "Built: $APP"
