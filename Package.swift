@@ -28,7 +28,7 @@ let package = Package(
         .target(name: "FordKnowledge", dependencies: ["OBDCore"], resources: [.process("Resources")]),
         .testTarget(name: "FordKnowledgeTests", dependencies: ["FordKnowledge"]),
         .target(name: "DiagnosticEngine", dependencies: ["OBDCore", "AdapterKit", "FordKnowledge"]),
-        .testTarget(name: "DiagnosticEngineTests", dependencies: ["DiagnosticEngine", "VehicleSim"]),
+        .testTarget(name: "DiagnosticEngineTests", dependencies: ["DiagnosticEngine", "VehicleSim"], resources: [.copy("Fixtures")]),
         .target(name: "CLIKit", dependencies: [
             "OBDCore", "AdapterKit", "VehicleSim", "FordKnowledge", "DiagnosticEngine",
             .product(name: "ArgumentParser", package: "swift-argument-parser"),

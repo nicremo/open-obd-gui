@@ -1,0 +1,61 @@
+{"createdAt":"2026-10-23T20:59:49Z","format":"openobd.capture/1","link":"/dev/cu.usbserial-REDACTED","tool":"openobd 0.1.0","type":"header"}
+{"line":"ATZ","t":0.007932792,"type":"sent"}
+{"ms":876,"t":0.884198292,"text":"\r\rELM327 v1.4b\r\r","type":"received"}
+{"line":"ATE0","t":0.884661959,"type":"sent"}
+{"ms":15,"t":0.899995875,"text":"ATE0\rOK\r\r","type":"received"}
+{"line":"ATL0","t":0.900133792,"type":"sent"}
+{"ms":15,"t":0.915960167,"text":"OK\r\r","type":"received"}
+{"line":"ATS1","t":0.916079542,"type":"sent"}
+{"ms":15,"t":0.931998209,"text":"OK\r\r","type":"received"}
+{"line":"ATH1","t":0.932128959,"type":"sent"}
+{"ms":15,"t":0.947997167,"text":"OK\r\r","type":"received"}
+{"line":"ATCAF1","t":0.948134209,"type":"sent"}
+{"ms":15,"t":0.963973875,"text":"OK\r\r","type":"received"}
+{"line":"ATAT1","t":0.964124667,"type":"sent"}
+{"ms":15,"t":0.980904334,"text":"OK\r\r","type":"received"}
+{"line":"ATI","t":0.98131675,"type":"sent"}
+{"ms":14,"t":0.996016084,"text":"ELM327 v1.4b\r\r","type":"received"}
+{"line":"STI","t":0.996403,"type":"sent"}
+{"ms":14,"t":1.011917125,"text":"STN2232 v5.12.4\r\r","type":"received"}
+{"line":"STDI","t":1.012030334,"type":"sent"}
+{"ms":15,"t":1.028048709,"text":"OBDLink EX r2.7.1\r\r","type":"received"}
+{"line":"STMFR","t":1.028378042,"type":"sent"}
+{"ms":15,"t":1.043975834,"text":"OBD Solutions LLC\r\r","type":"received"}
+{"line":"STSN","t":1.044234209,"type":"sent"}
+{"ms":15,"t":1.060002875,"text":"REDACTED\r\r","type":"received"}
+{"line":"ATRV","t":1.0602255,"type":"sent"}
+{"ms":15,"t":1.07595825,"text":"0.0V\r\r","type":"received"}
+{"line":"ATRV","t":1.076431084,"type":"sent"}
+{"ms":15,"t":1.091925459,"text":"0.0V\r\r","type":"received"}
+{"line":"STP33","t":1.0924090419999999,"type":"sent"}
+{"ms":15,"t":1.107908084,"text":"OK\r\r","type":"received"}
+{"line":"STPR","t":1.108011584,"type":"sent"}
+{"ms":15,"t":1.123917667,"text":"33\r\r","type":"received"}
+{"line":"ATCRA","t":1.124049459,"type":"sent"}
+{"ms":15,"t":1.1399261250000001,"text":"OK\r\r","type":"received"}
+{"line":"STPX h:7DF, d:0100, t:300","t":1.140463417,"type":"sent"}
+{"ms":32,"t":1.172798417,"text":"CAN ERROR\r\r","type":"received"}
+{"line":"ATRV","t":1.173233792,"type":"sent"}
+{"ms":16,"t":1.189788875,"text":"0.0V\r\r","type":"received"}
+{"line":"ATCF700","t":1.190603167,"type":"sent"}
+{"ms":13,"t":1.204080167,"text":"OK\r\r","type":"received"}
+{"line":"ATCM700","t":1.204795959,"type":"sent"}
+{"ms":14,"t":1.2200937920000001,"text":"OK\r\r","type":"received"}
+{"line":"STPX h:706, d:3E00, t:80, r:1","t":1.220302,"type":"sent"}
+{"ms":31,"t":1.252039,"text":"CAN ERROR\r\r","type":"received"}
+{"line":"ATRV","t":1.252677209,"type":"sent"}
+{"ms":15,"t":1.268324709,"text":"0.0V\r\r","type":"received"}
+{"line":"STP53","t":1.2688226249999999,"type":"sent"}
+{"ms":14,"t":1.283893375,"text":"OK\r\r","type":"received"}
+{"line":"STPR","t":1.284019167,"type":"sent"}
+{"ms":15,"t":1.2999333339999999,"text":"53\r\r","type":"received"}
+{"line":"ATCRA","t":1.300199334,"type":"sent"}
+{"ms":15,"t":1.3159295,"text":"OK\r\r","type":"received"}
+{"line":"ATCF700","t":1.316096,"type":"sent"}
+{"ms":15,"t":1.332082084,"text":"OK\r\r","type":"received"}
+{"line":"ATCM700","t":1.332378834,"type":"sent"}
+{"ms":15,"t":1.347898875,"text":"OK\r\r","type":"received"}
+{"line":"STPX h:706, d:3E00, t:80, r:1","t":1.348201417,"type":"sent"}
+{"ms":31,"t":1.381111084,"text":"CAN ERROR\r\r","type":"received"}
+{"line":"ATRV","t":1.38130075,"type":"sent"}
+{"ms":13,"t":1.395846875,"text":"0.0V\r\r","type":"received"}
