@@ -1,0 +1,27 @@
+{"createdAt":"2026-10-23T20:59:48Z","format":"openobd.capture/1","link":"/dev/cu.usbserial-REDACTED","tool":"openobd 0.1.0","type":"header"}
+{"line":"ATZ","t":0.016251375,"type":"sent"}
+{"ms":869,"t":0.886444917,"text":"\r\rELM327 v1.4b\r\r","type":"received"}
+{"line":"ATE0","t":0.886733042,"type":"sent"}
+{"ms":15,"t":0.902325167,"text":"ATE0\rOK\r\r","type":"received"}
+{"line":"ATL0","t":0.902536917,"type":"sent"}
+{"ms":15,"t":0.918341959,"text":"OK\r\r","type":"received"}
+{"line":"ATS1","t":0.918491959,"type":"sent"}
+{"ms":15,"t":0.934354292,"text":"OK\r\r","type":"received"}
+{"line":"ATH1","t":0.934652834,"type":"sent"}
+{"ms":15,"t":0.950318709,"text":"OK\r\r","type":"received"}
+{"line":"ATCAF1","t":0.950473167,"type":"sent"}
+{"ms":15,"t":0.966245292,"text":"OK\r\r","type":"received"}
+{"line":"ATAT1","t":0.966372875,"type":"sent"}
+{"ms":15,"t":0.982284,"text":"OK\r\r","type":"received"}
+{"line":"ATI","t":0.982400834,"type":"sent"}
+{"ms":15,"t":0.998328875,"text":"ELM327 v1.4b\r\r","type":"received"}
+{"line":"STI","t":0.9984785,"type":"sent"}
+{"ms":15,"t":1.014315625,"text":"STN2232 v5.12.4\r\r","type":"received"}
+{"line":"STDI","t":1.014473959,"type":"sent"}
+{"ms":15,"t":1.030280917,"text":"OBDLink EX r2.7.1\r\r","type":"received"}
+{"line":"STMFR","t":1.030471334,"type":"sent"}
+{"ms":15,"t":1.046215542,"text":"OBD Solutions LLC\r\r","type":"received"}
+{"line":"STSN","t":1.046337417,"type":"sent"}
+{"ms":15,"t":1.062314375,"text":"REDACTED\r\r","type":"received"}
+{"line":"ATRV","t":1.06242575,"type":"sent"}
+{"ms":15,"t":1.078260209,"text":"0.0V\r\r","type":"received"}
