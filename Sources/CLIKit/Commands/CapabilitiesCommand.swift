@@ -66,7 +66,7 @@ struct CapabilitiesCommand: AsyncParsableCommand {
         let errors: [OBDError] = [
             .adapterNotFound, .portBusy(""), .portOpenFailed(path: "", errno: 0), .io(""), .timeout(""), .adapterNotResponding,
             .adapterRejected(command: "", reply: ""), .busUnavailable(""), .noData, .canError, .busBusy, .bufferFull, .adapterError(""),
-            .policyDenied(""), .malformedResponse(""), .negativeResponse(service: 0, code: 0), .vehicleNotResponding, .cancelled, .disconnected, .busy,
+            .policyDenied(""), .malformedResponse(""), .negativeResponse(service: 0, code: 0), .vehicleNotResponding, .noVehiclePower(0), .cancelled, .disconnected, .busy,
         ]
         return Capabilities(
             tool: OpenOBD.toolName,

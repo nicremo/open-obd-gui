@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-import DiagnosticEngine
+@testable import DiagnosticEngine
 import OBDCore
 @testable import OpenOBDAppCore
 
@@ -42,6 +42,20 @@ import OBDCore
         #expect(store.list().first?.simulated == true)
         #expect(model.report?.worstSeverity == .high)
         #expect(model.report?.primaryReadiness?.ignition == .compression)
+    }
+
+    @Test func silentVehicleIsNotAnAllClear() async throws {
+        let (model, _) = await makeModel()
+        await model.scan()
+        var report = try #require(model.report)
+        #expect(report.vehicleAnswered)
+
+        report.findings = [
+            Finding(kind: .noVehicleResponse, severity: .high, text: "Das Fahrzeug antwortet nicht.", evidence: ""),
+            Finding(kind: .noVehiclePower, severity: .high, text: "Der Adapter bekommt keinen Strom vom Auto (0 V).", evidence: ""),
+        ]
+        #expect(!report.vehicleAnswered)
+        #expect(report.silenceReason == "Der Adapter bekommt keinen Strom vom Auto (0 V).")
     }
 
     @Test func liveDataBuildsSeries() async throws {

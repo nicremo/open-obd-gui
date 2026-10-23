@@ -142,10 +142,16 @@ struct TimingStrip: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
-                segment("Fehler", value: "\(report.summary.faultCount)", flag: Flag(report.worstSeverity),
-                        note: report.worstSeverity.map { "höchste Stufe \($0.german)" } ?? "nichts gespeichert") { model.section = .faults }
-                segment("Dringend", value: "\(urgentCount)", flag: urgentCount > 0 ? Flag(.high) : nil,
-                        note: "Hoch und Kritisch") { model.section = .faults }
+                if report.vehicleAnswered {
+                    segment("Fehler", value: "\(report.summary.faultCount)", flag: Flag(report.worstSeverity),
+                            note: report.worstSeverity.map { "höchste Stufe \($0.german)" } ?? "nichts gespeichert") { model.section = .faults }
+                    segment("Dringend", value: "\(urgentCount)", flag: urgentCount > 0 ? Flag(.high) : nil,
+                            note: "Hoch und Kritisch") { model.section = .faults }
+                } else {
+                    // Without any answer a zero would read as an all-clear.
+                    segment("Fehler", value: nil, state: .noResponse, note: "nicht gelesen") { model.section = .faults }
+                    segment("Dringend", value: nil, state: .noResponse, note: "nicht gelesen") { model.section = .faults }
+                }
                 segment("Steuergeräte", value: "\(report.summary.moduleCount)", note: busNote) { model.section = .modules }
                 segment("Bordspannung", value: report.adapter.voltage.map { MeasuredValue.format($0, decimals: 1) }, unit: "V",
                         note: voltageNote, info: "Gemessen vom Adapter an Pin 16 der OBD-Buchse. Die Einordnung ist eine Faustregel für 12-V-Bleibatterien, keine Norm.") { model.section = .vehicle }
@@ -205,6 +211,7 @@ struct TimingStrip: View {
 
     private var voltageNote: String {
         guard let voltage = report.adapter.voltage else { return "nicht gemessen" }
+        if report.findings.contains(where: { $0.kind == .noVehiclePower }) { return "kein Strom vom Auto" }
         if voltage >= 13.2 { return "Lichtmaschine lädt" }
         if voltage >= 12.2 { return "Batterie in Ordnung" }
         if voltage >= 11.8 { return "Batterie schwach" }

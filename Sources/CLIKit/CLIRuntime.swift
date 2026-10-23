@@ -175,7 +175,7 @@ enum CLI {
             case .adapterNotFound: return 3
             case .portBusy: return 7
             case .policyDenied: return 6
-            case .vehicleNotResponding, .noData, .canError, .negativeResponse: return 5
+            case .vehicleNotResponding, .noData, .canError, .negativeResponse, .noVehiclePower: return 5
             case .cancelled: return 130
             case .malformedResponse, .busy: return 1
             case .portOpenFailed, .io, .timeout, .adapterNotResponding, .adapterRejected, .busUnavailable,

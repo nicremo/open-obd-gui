@@ -43,7 +43,10 @@ struct FaultsView: View {
                 (FaultFilter.active, "Aktiv", all.filter { FaultFilter.active.matches($0) }.count),
             ], selection: Binding(get: { filter }, set: { filterRaw = $0.rawValue }))
         } content: {
-            if all.isEmpty {
+            if all.isEmpty, !report.vehicleAnswered {
+                EmptyState(symbol: "antenna.radiowaves.left.and.right.slash", title: "Fehlerspeicher nicht gelesen",
+                           message: report.silenceReason)
+            } else if all.isEmpty {
                 EmptyState(symbol: "checkmark.seal", title: "Kein Steuergerät meldet einen Fehler",
                            message: "Geprüft wurden \(report.modules.count) Steuergeräte und die OBD-Abgasdiagnose von \(report.obd.ecus.count) Steuergeräten.",
                            tint: Palette.ok)
