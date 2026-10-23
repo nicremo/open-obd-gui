@@ -112,6 +112,7 @@ public struct Finding: Sendable, Codable, Equatable {
     public enum Kind: String, Sendable, Codable {
         case noVehicleResponse
         case vinMismatch
+        case noVehiclePower
         case lowVoltage
         case milOn
         case readinessIncomplete

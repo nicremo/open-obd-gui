@@ -8,6 +8,17 @@ extension VehicleReport {
         allTroubleCodes.map(\.severity).max()
     }
 
+    /// False when not a single control unit answered. Zero faults then means "not read", never "no faults".
+    public var vehicleAnswered: Bool {
+        !findings.contains { $0.kind == .noVehicleResponse }
+    }
+
+    /// Why nothing answered, in the words the user can act on.
+    public var silenceReason: String {
+        (findings.first { $0.kind == .noVehiclePower } ?? findings.first { $0.kind == .noVehicleResponse })?.text
+            ?? "Kein Steuergerät hat geantwortet."
+    }
+
     public var primaryReadiness: ReadinessReport? {
         obd.ecus.compactMap(\.readiness).first
     }

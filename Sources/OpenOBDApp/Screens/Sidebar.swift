@@ -54,7 +54,9 @@ struct VehicleHeader: View {
                 .fixedSize(horizontal: false, vertical: true)
             if let report = model.report {
                 HStack(spacing: 6) {
-                    FlagGlyph(flag: Flag(report.worstSeverity), width: 13)
+                    if report.vehicleAnswered {
+                        FlagGlyph(flag: Flag(report.worstSeverity), width: 13)
+                    }
                     Text(status(report))
                         .font(.system(size: 12))
                         .foregroundStyle(Palette.textSecondary)
@@ -75,6 +77,7 @@ struct VehicleHeader: View {
     }
 
     private func status(_ report: VehicleReport) -> String {
+        guard report.vehicleAnswered else { return "Keine Antwort vom Fahrzeug" }
         let count = report.summary.faultCount
         guard count > 0 else { return "Keine Fehler" }
         let urgent = FaultGroup.groups(from: report).filter { $0.severity >= .high }.count

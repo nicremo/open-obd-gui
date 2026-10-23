@@ -142,7 +142,11 @@ final class ReportBuilder {
                                     text: "Nicht alle Steuergeräte melden dieselbe Fahrgestellnummer. Ein Steuergerät könnte getauscht oder anders codiert sein.",
                                     evidence: vinSources.map { "\($0.source): \($0.vin)" }.joined(separator: "; ")))
         }
-        if let voltage, voltage < 12.0 {
+        if let voltage, voltage < AdapterDriver.vehiclePowerThreshold {
+            findings.append(Finding(kind: .noVehiclePower, severity: .high,
+                                    text: "Der Adapter bekommt keinen Strom vom Auto (\(MeasuredValue.format(voltage)) V). Er steckt nicht in der OBD-Buchse, oder deren Sicherung ist defekt.",
+                                    evidence: "Adaptermessung ATRV an Pin 16"))
+        } else if let voltage, voltage < 12.0 {
             findings.append(Finding(kind: .lowVoltage, severity: voltage < 11.6 ? .high : .medium,
                                     text: "Batteriespannung niedrig (\(MeasuredValue.format(voltage)) V). Unter 12 V ist die Batterie meist deutlich entladen.",
                                     evidence: "Adaptermessung ATRV an Pin 16"))

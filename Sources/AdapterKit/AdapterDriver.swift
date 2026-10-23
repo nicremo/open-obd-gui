@@ -80,6 +80,10 @@ public struct RequestResult: Sendable, Codable {
 public actor AdapterDriver {
     public typealias TrafficHandler = @Sendable (TrafficEvent) -> Void
 
+    /// Below this pin 16 voltage the adapter is not plugged into a vehicle (or the socket fuse is open).
+    /// The OBDLink EX then runs on USB power alone and measures 0.0 V.
+    public static let vehiclePowerThreshold = 3.0
+
     enum ReceiveFilter: Equatable {
         case unknown
         case standard
@@ -208,7 +212,17 @@ public actor AdapterDriver {
             try await resynchronize()
             throw OBDError.timeout(detail)
         }
-        return try evaluate(exchanged.response, reply: exchanged.reply, command: command, payload: payload, target: target)
+        do {
+            return try evaluate(exchanged.response, reply: exchanged.reply, command: command, payload: payload, target: target)
+        } catch let error as OBDError where error == .canError || error == .vehicleNotResponding {
+            throw await powerAware(error)
+        }
+    }
+
+    /// A bus error without vehicle power has a different cause and remedy. Measures again, the adapter may have been plugged in since.
+    func powerAware(_ error: OBDError) async -> OBDError {
+        guard let voltage = try? await readVoltage(), voltage < Self.vehiclePowerThreshold else { return error }
+        return .noVehiclePower(voltage)
     }
 
     public func close() async {

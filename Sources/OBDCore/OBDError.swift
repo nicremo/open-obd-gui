@@ -19,6 +19,8 @@ public enum OBDError: Error, Equatable, Sendable, Codable {
     case malformedResponse(String)
     case negativeResponse(service: UInt8, code: UInt8)
     case vehicleNotResponding
+    /// Pin 16 delivers (almost) nothing. A USB adapter keeps running on USB power and only reports a bus error.
+    case noVehiclePower(Double)
     case cancelled
     case disconnected
     case busy
@@ -42,6 +44,7 @@ public enum OBDError: Error, Equatable, Sendable, Codable {
         case .malformedResponse: "MALFORMED_RESPONSE"
         case .negativeResponse: "NEGATIVE_RESPONSE"
         case .vehicleNotResponding: "VEHICLE_NOT_RESPONDING"
+        case .noVehiclePower: "NO_VEHICLE_POWER"
         case .cancelled: "CANCELLED"
         case .disconnected: "DISCONNECTED"
         case .busy: "BUSY"
@@ -85,6 +88,8 @@ public enum OBDError: Error, Equatable, Sendable, Codable {
             "Das Steuergerät hat Dienst \(Hex.byteString(service)) abgelehnt (Code \(Hex.byteString(code)): \(NegativeResponseCode.german(code)))."
         case .vehicleNotResponding:
             "Das Fahrzeug antwortet nicht."
+        case .noVehiclePower(let voltage):
+            "Der Adapter bekommt keinen Strom vom Auto (\(MeasuredValue.format(voltage)) V an der OBD-Buchse)."
         case .cancelled:
             "Abgebrochen."
         case .disconnected:
@@ -105,6 +110,8 @@ public enum OBDError: Error, Equatable, Sendable, Codable {
             "Zieh den Adapter kurz ab und steck ihn wieder ein."
         case .canError, .vehicleNotResponding, .noData:
             "Prüfe, ob die Zündung an ist und der Adapter fest in der OBD-Buchse sitzt."
+        case .noVehiclePower:
+            "Steck den Adapter in die OBD-Buchse und schalte die Zündung ein. Steckt er schon, prüfe die Sicherung der OBD-Buchse."
         case .busUnavailable:
             "MS-CAN ist nur mit einem OBDLink EX oder MX+ erreichbar."
         case .policyDenied:

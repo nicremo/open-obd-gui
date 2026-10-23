@@ -114,6 +114,7 @@ enum Script {
     @Test func adapterErrorsBecomeTypedErrors() async throws {
         let replay = ReplayLink(exchanges: Script.stnInit + Script.hsCAN + [
             .text("STPX h:7DF, d:0100, t:300", "CAN ERROR"),
+            .text("ATRV", "12.4V"),
             .text("STPX h:7DF, d:0101, t:300", "BUFFER FULL"),
             .text("STPX h:7DF, d:0105, t:300", "?"),
             .text("STPX h:7DF, d:010C, t:300", "NO DATA"),
@@ -125,6 +126,26 @@ enum Script {
         await #expect(throws: OBDError.bufferFull) { _ = try await driver.request([0x01, 0x01], to: .functional) }
         await #expect(throws: OBDError.self) { _ = try await driver.request([0x01, 0x05], to: .functional) }
         #expect(try await driver.request([0x01, 0x0C], to: .functional).isEmpty)
+    }
+
+    @Test func busErrorWithoutPin16PowerMeansNoVehicle() async throws {
+        let replay = ReplayLink(exchanges: Script.stnInit + Script.hsCAN + [
+            .text("STPX h:7DF, d:0100, t:300", "CAN ERROR"),
+            .text("ATRV", "0.0V"),
+            .text("STPX h:7DF, d:0100, t:300", "UNABLE TO CONNECT"),
+            .text("ATRV", "0.1V"),
+            .text("STPX h:7DF, d:0100, t:300", "UNABLE TO CONNECT"),
+            .text("ATRV", "12.6V"),
+        ])
+        let driver = AdapterDriver(link: replay)
+        _ = try await driver.initialize()
+        try await driver.selectBus(.hsCAN)
+        await #expect(throws: OBDError.noVehiclePower(0)) { _ = try await driver.request([0x01, 0x00], to: .functional) }
+        await #expect(throws: OBDError.noVehiclePower(0.1)) { _ = try await driver.request([0x01, 0x00], to: .functional) }
+        // Plugged in meanwhile: the fresh measurement wins over the one from initialization.
+        await #expect(throws: OBDError.vehicleNotResponding) { _ = try await driver.request([0x01, 0x00], to: .functional) }
+        #expect(await driver.voltage == 12.6)
+        #expect(await replay.remaining == 0)
     }
 
     @Test func missingMSCANIsReported() async throws {
